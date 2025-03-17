@@ -2,10 +2,14 @@ import streamlit as st
 import joblib
 import numpy as np
 import time
+import pickle
 
 # Load Model, Encoder & Scaler
 model = joblib.load('BCA_model.pkl', 'r')
-encoder = joblib.load('multi_label_encoder.pkl', 'r')
+# encoder = joblib.load('multi_label_encoder.pkl', 'r')
+with open('multi_label_encoder.pkl', 'rb') as file:
+    encoder = pickle.load(file)
+
 scaler = joblib.load('scaler.pkl', 'r')
 
 st.set_page_config(page_title="Customer Churn Prediction", layout="centered")
