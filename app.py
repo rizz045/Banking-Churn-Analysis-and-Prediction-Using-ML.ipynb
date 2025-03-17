@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 from MLEncoder import MultiLabelEncoder
+import time 
 
 # Load Model, Encoder & Scaler
 model = joblib.load('BCA_model.pkl', 'r')
@@ -69,7 +70,7 @@ geo, gender, card_type = encoder.transform(['Geography','Gender',"Card Type"],[g
 #                         float(day_mins), float(day_calls), float(eve_mins), float(eve_calls),
 #                         float(night_mins), float(night_calls), float(customer_calls), float(total_charge)]])
 
-input_data = np.array([c_score, geo, gender, age, tenure, balance, products, credit_card, active, estimated_sal, complain, ratings, card_type, points_earned])
+input_data = np.array([c_score, geo, gender, age, tenure, balance, products, credit_card, active, estimated_sal, complain, ratings, card_type, points_earned]).reshape(1, -1)
 
 input_data_scaled = scaler.transform(input_data)
 
