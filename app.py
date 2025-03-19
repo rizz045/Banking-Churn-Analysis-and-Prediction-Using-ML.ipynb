@@ -64,12 +64,6 @@ complain = 1 if complain == "Yes" else 0
 # Encode categorical columns
 geo, gender, card_type = encoder.transform(['Geography','Gender',"Card Type"],[geo, gender, card_type])
 
-# Prepare Data for Prediction
-# input_data = np.array([[float(c_score), float(geo), float(gender),
-#                         float(voice_plan), float(voice_messages), float(intl_plan), float(intl_mins), float(intl_calls),
-#                         float(day_mins), float(day_calls), float(eve_mins), float(eve_calls),
-#                         float(night_mins), float(night_calls), float(customer_calls), float(total_charge)]])
-
 input_data = np.array([c_score, geo, gender, age, tenure, balance, products, credit_card, active, estimated_sal, complain, ratings, card_type, points_earned]).reshape(1, -1)
 
 input_data_scaled = scaler.transform(input_data)
